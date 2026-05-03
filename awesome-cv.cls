@@ -510,7 +510,7 @@
     \ifthenelse{\isundefined{\@photo}}{}{%
       \newlength{\photodim}
       \ifthenelse{\equal{\@photoshape}{circle}}%
-        {\setlength{\photodim}{1.3cm}}%
+        {\setlength{\photodim}{1.52cm}}%
         {\setlength{\photodim}{1.8cm}}%
       \ifthenelse{\equal{\@photoedge}{edge}}%
         {\def\@photoborder{darkgray}}%
@@ -692,7 +692,7 @@
   \end{minipage}%
   \begin{minipage}[c]{\headerphotowidth}%
     \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
-  \end{minipage}
+  \end{minipage}\par\vspace{0mm}
 }
 
 % Define a footer for CV

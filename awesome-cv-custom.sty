@@ -1,0 +1,113 @@
+\ProvidesPackage{awesome-cv-custom}[2026/05/01 Project customizations for Awesome CV]
+
+\RequirePackage{needspace}
+\RequirePackage[default]{lato}
+
+\definecolor{sourcepurple}{HTML}{250070}
+\colorlet{awesome}{sourcepurple}
+\colorlet{sectiondivider}{sourcepurple}
+\setbool{acvSectionColorHighlight}{false}
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+\renewcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{sourcepurple} \MakeUppercase{#1}}}
+\renewcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{sourcepurple} \MakeUppercase{#1}}}
+\renewcommand*{\headerpositionstyle}[1]{{\fontsize{8.8pt}{1em}\bodyfont\bfseries\color{text} #1}}
+\renewcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} {\color{sourcepurple}\faLocationDot}\acvHeaderIconSep#1}}
+\renewcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
+\renewcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\color{lighttext} #1}}
+\renewcommand*{\sectionstyle}[1]{{\color{sourcepurple}\sectionstyleface{#1}}}
+\renewcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\bfseries\textcolor{text}{#1}}}
+\renewcommand*{\entrydatestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\renewcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\color{graytext} #1}}
+\renewcommand*{\subentrypositionstyle}[1]{{\fontsize{7pt}{1em}\bodyfont\color{graytext} #1}}
+\renewcommand*{\paragraphstyle}{\fontsize{10pt}{13pt}\bodyfontlight\upshape\color{text}}
+\renewcommand*{\descriptionstyle}[1]{{\fontsize{10pt}{13pt}\bodyfontlight\upshape\color{text} #1}}
+\renewcommand*{\skillsetstyle}[1]{{\fontsize{10pt}{13pt}\bodyfontlight\color{text} #1}}
+
+\renewcommand*{\faMobile}{\faPhone}
+\renewcommand*{\faEnvelope}{\faAt}
+\renewcommand{\faAlt}[3]{%
+  \BeginAccSupp{ActualText={#1}}%
+    \mbox{{\color{sourcepurple}#2}\acvHeaderIconSep#3}%
+  \EndAccSupp{}%
+}
+
+\renewcommand*{\headerfont}{\lato\selectfont}
+\renewcommand*{\headerfontlight}{\lato\fontseries{l}\selectfont}
+\renewcommand*{\footerfont}{\lato}
+\renewcommand*{\bodyfont}{\lato}
+\renewcommand*{\bodyfontlight}{\lato\fontseries{l}\selectfont}
+
+\renewenvironment{cvparagraph}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-3mm}
+  \paragraphstyle
+  \raggedright
+}{%
+  \par
+  \vspace{2mm}
+}
+
+\renewenvironment{cventries}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-2.0mm}
+  \par
+}{%
+  \par
+}
+
+\newcommand*{\jobheaderstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\color{darktext} #1}}
+\newcommand*{\jobconnectorstyle}[1]{\begingroup\fontsize{10pt}{1em}\bodyfont\mdseries\color{darktext}#1\endgroup}
+
+\newcommand*{\jobentry}[4]{%
+  \Needspace{7\baselineskip}
+  \vspace{0.2mm}
+  \noindent\makebox[\textwidth][l]{%
+    \jobheaderstyle{\textbf{#1}\hspace{0.2em}\jobconnectorstyle{bei}\hspace{0.2em}\textbf{#2}}%
+    \hfill
+    \entrydatestyle{#3}%
+  }\par
+  \ifstrempty{#4}{}{%
+    \vspace{2.6mm}
+    \descriptionstyle{#4}%
+    \par
+  }%
+}
+
+\newcommand*{\jobentryheading}[3]{%
+  \Needspace{7\baselineskip}
+  \vspace{0.2mm}
+  \noindent\makebox[\textwidth][l]{%
+    \jobheaderstyle{#1}%
+    \hfill
+    \entrydatestyle{#2}%
+  }\par
+  \ifstrempty{#3}{}{%
+    \vspace{2.6mm}
+    \descriptionstyle{#3}%
+    \par
+  }%
+}
+
+\newcommand*{\educationentry}[3]{%
+  \vspace{0.2mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \noindent\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+    \entrytitlestyle{#2} & \entrydatestyle{#3} \\
+    \hspace{5mm}\descriptionstyle{#1} & \\
+  \end{tabular*}\par
+  \vspace{1.2mm}
+}
+
+\renewenvironment{cvitems}{%
+  \vspace{-2.9mm}
+  \begin{raggedright}
+  \begin{itemize}[leftmargin=5mm, rightmargin=1.8cm, nosep, noitemsep]
+    \setlength{\parskip}{0pt}
+    \renewcommand{\labelitemi}{\bullet}
+}{%
+  \end{itemize}
+  \end{raggedright}
+  \vspace{1.0mm}
+}
