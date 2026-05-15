@@ -1,4 +1,4 @@
-.PHONY: examples private-cv
+.PHONY: examples private-cv private-coverletter
 
 TEX_ENGINE ?= /usr/local/texlive/2026/bin/universal-darwin/lualatex
 EXAMPLES_DIR = examples
@@ -26,6 +26,12 @@ private-cv: $(PRIVATE_DIR)/cv.pdf
 $(PRIVATE_DIR)/cv.pdf: $(PRIVATE_DIR)/cv.tex $(PRIVATE_CV_SRCS) awesome-cv.cls awesome-cv-custom.sty
 	mkdir -p $(TEXMFVAR)
 	cd $(PRIVATE_DIR) && TEXMFVAR=$(TEXMFVAR) TEXINPUTS=.:..//: $(TEX_ENGINE) -interaction=nonstopmode -halt-on-error cv.tex
+
+private-coverletter: $(PRIVATE_DIR)/coverletter.pdf
+
+$(PRIVATE_DIR)/coverletter.pdf: $(PRIVATE_DIR)/coverletter.tex awesome-cv.cls awesome-cv-custom.sty
+	mkdir -p $(TEXMFVAR)
+	cd $(PRIVATE_DIR) && TEXMFVAR=$(TEXMFVAR) TEXINPUTS=.:..//: $(TEX_ENGINE) -interaction=nonstopmode -halt-on-error coverletter.tex
 
 clean:
 	rm -rf $(EXAMPLES_DIR)/*.pdf
